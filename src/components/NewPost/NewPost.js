@@ -9,17 +9,6 @@ const INITIAL_STATE = () => {
   };
 };
 
-const createUID = () => {
-  const characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  const len = characters.length;
-  let result = "";
-  for (var i = 0; i < 10; i++) {
-    result += characters.charAt(Math.floor(Math.random() * len));
-  }
-  return result;
-};
-
 const NewPost = ({ currentUser, warningMessage }) => {
   const [state, setState] = useState(INITIAL_STATE);
 
@@ -28,7 +17,6 @@ const NewPost = ({ currentUser, warningMessage }) => {
       const postDoc = {
         user: currentUser,
         content: state.post,
-        uid: createUID(),
       };
       await createPostDocument(postDoc);
       setState(INITIAL_STATE);

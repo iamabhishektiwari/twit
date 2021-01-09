@@ -2,6 +2,17 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 
+const createUID = () => {
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const len = characters.length;
+  let result = "";
+  for (var i = 0; i < 10; i++) {
+    result += characters.charAt(Math.floor(Math.random() * len));
+  }
+  return result;
+};
+
 const config = {
   apiKey: "AIzaSyB4b5NVJF3LdJuKDApP6BTNYUBCkCjMsHQ",
   authDomain: "twit-world.firebaseapp.com",
@@ -13,7 +24,8 @@ const config = {
 };
 
 export const createPostDocument = async (postDoc) => {
-  const postRef = firestore.doc(`post/${postDoc.uid}`);
+  const postID = createUID();
+  const postRef = firestore.doc(`post/${postID}`);
   const snapShot = await postRef.get();
   if (!snapShot.exists) {
     const { user, content } = postDoc;
@@ -30,6 +42,25 @@ export const createPostDocument = async (postDoc) => {
     }
   }
   return postRef;
+};
+
+export const createCommentDocument = async (comment, post, user) => {
+  const commentID = createUID();
+  const commentRef = firestore.doc(`post/${post.uid}/comments/${commentID}`);
+  const snapShot = await commentRef.get();
+  if (!snapShot.exists) {
+    const createAt = new Date();
+    try {
+      await commentRef.set({
+        user,
+        comment,
+        createAt,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  return commentRef;
 };
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {

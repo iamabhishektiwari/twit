@@ -13,6 +13,7 @@ class App extends Component {
     this.state = {
       currentUser: null,
       warningMessage: "Post as anonymous",
+      userFetched: false,
     };
   }
 
@@ -28,12 +29,14 @@ class App extends Component {
               id: snapShot.id,
               ...snapShot.data(),
             },
+            userFetched: true,
             warningMessage: `Post as ${snapShot.data().displayName}`,
           });
         });
       }
       this.setState({
         currentUser: userAuth,
+        userFetched: true,
       });
     });
   }
@@ -44,20 +47,22 @@ class App extends Component {
     return (
       <Container>
         <Header currentUser={this.state.currentUser} />
-        <Switch>
-          <Route exact path="/">
-            <Homepage
-              currentUser={this.state.currentUser}
-              warningMessage={this.state.warningMessage}
-            />
-          </Route>
-          <Route exact path="/sign-up">
-            <SignInSignUp />
-          </Route>
-          <Route exact path="/sign-in">
-            <SignInSignUp isSignIn />
-          </Route>
-        </Switch>
+        {this.state.userFetched && (
+          <Switch>
+            <Route exact path="/">
+              <Homepage
+                currentUser={this.state.currentUser}
+                warningMessage={this.state.warningMessage}
+              />
+            </Route>
+            <Route exact path="/sign-up">
+              <SignInSignUp />
+            </Route>
+            <Route exact path="/sign-in">
+              <SignInSignUp isSignIn />
+            </Route>
+          </Switch>
+        )}
       </Container>
     );
   }

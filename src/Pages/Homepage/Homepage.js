@@ -5,11 +5,13 @@ import Posts from "../../components/Posts/Posts";
 
 import "./Homepage.scss";
 
-const Homepage = ({ currentUser, warningMessage }) => (
-  <Container className="home">
-    <NewPost currentUser={currentUser} warningMessage={warningMessage} />
-    <Posts />
-  </Container>
-);
+const Homepage = ({ currentUser, warningMessage }) => {
+  return (
+    <Container className="home">
+      <NewPost currentUser={currentUser} warningMessage={warningMessage} />
+      <Posts currentUser={currentUser} />
+    </Container>
+  );
+};
 
 export default Homepage;
