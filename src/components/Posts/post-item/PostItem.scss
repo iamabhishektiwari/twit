@@ -1,0 +1,14 @@
+.post-item {
+  margin: 25px 10px 10px 0px;
+  .card {
+    padding: 10px;
+  }
+  .post-actions {
+    display: flex;
+    justify-content: flex-start;
+    .action {
+      margin-right: 12px;
+      cursor: pointer;
+    }
+  }
+}

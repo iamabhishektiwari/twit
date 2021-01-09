@@ -1,0 +1,23 @@
+.header {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  .logo {
+    cursor: pointer;
+  }
+  .sign-in-sign-up {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .item {
+      padding: 10px 15px;
+      cursor: pointer;
+      color: black;
+    }
+  }
+}

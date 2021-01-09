@@ -1,0 +1,16 @@
+.new-post {
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  .textarea {
+    border-style: none;
+    border: 1px solid;
+    border-radius: 2%;
+    width: 350px;
+    height: 100px;
+  }
+  .text-muted {
+    font-size: 12px;
+  }
+}
