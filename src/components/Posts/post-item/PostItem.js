@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import CommentSection from "../../comment-section/CommentSection";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import ThumbDownAltIcon from "@material-ui/icons/ThumbDownAlt";

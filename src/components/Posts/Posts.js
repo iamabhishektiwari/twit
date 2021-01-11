@@ -1,3 +1,4 @@
+import { CircularProgress } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { firestore } from "../../firebase/utils";
 import PostItem from "./post-item/PostItem";
@@ -21,6 +22,13 @@ const Posts = ({ currentUser }) => {
     return () => setPosts([]);
   }, []);
 
+  if (posts.length === 0) {
+    return (
+      <div style={{ textAlign: "center" }}>
+        <CircularProgress size={50} />
+      </div>
+    );
+  }
   return (
     <div className="posts">
       {posts.map((post) => (
