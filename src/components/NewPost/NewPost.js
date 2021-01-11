@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Container, Row, Button } from "react-bootstrap";
 import { createPostDocument } from "../../firebase/utils";
+import PublicIcon from "@material-ui/icons/Public";
+import { Button, Card } from "@material-ui/core";
 import "./NewPost.scss";
 
 const INITIAL_STATE = () => {
@@ -31,24 +32,40 @@ const NewPost = ({ currentUser, warningMessage }) => {
   };
 
   return (
-    <Container className="new-post">
-      <Row>
+    <div className="new-post">
+      <Card className="card" elevation={0}>
         <div className="form">
-          <div className="input-textarea">
-            <textarea
-              className="textarea"
-              name="post"
-              value={state.post}
-              onChange={handleChange}
-              placeholder="What's on your mind..."
-              required
-            />
-          </div>
-          <div className="text-muted">{warningMessage}</div>
-          <Button onClick={handleSubmit}>Post</Button>
+          <textarea
+            className="textarea"
+            name="post"
+            value={state.post}
+            onChange={handleChange}
+            placeholder="What's on your mind..."
+            required
+          />
         </div>
-      </Row>
-    </Container>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignContent: "center",
+          }}
+        >
+          <div className="text-muted">
+            <PublicIcon color="primary" /> {warningMessage}
+          </div>
+          <Button
+            color="primary"
+            disableElevation
+            variant="contained"
+            className="button"
+            onClick={handleSubmit}
+          >
+            Post
+          </Button>
+        </div>
+      </Card>
+    </div>
   );
 };
 

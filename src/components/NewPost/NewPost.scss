@@ -1,15 +1,23 @@
 .new-post {
+  margin: 25px 10px 10px 0px;
+  .card {
+    padding: 10px;
+  }
   .form {
-    display: flex;
-    flex-direction: column;
+    width: 80%;
+    .textarea {
+      resize: none;
+      width: 100%;
+      border-style: none;
+      outline: none;
+      height: 100px;
+    }
+    .button {
+      border-radius: 5px;
+      float: right;
+    }
   }
-  .textarea {
-    border-style: none;
-    border: 1px solid;
-    border-radius: 2%;
-    width: 350px;
-    height: 100px;
-  }
+
   .text-muted {
     font-size: 12px;
   }

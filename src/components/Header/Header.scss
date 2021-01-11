@@ -7,6 +7,10 @@
   justify-content: space-between;
 
   .logo {
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
     cursor: pointer;
   }
   .sign-in-sign-up {
@@ -15,9 +19,9 @@
     align-items: center;
 
     .item {
-      padding: 10px 15px;
+      margin: 10px 15px;
+      border-radius: 5px;
       cursor: pointer;
-      color: black;
     }
   }
 }

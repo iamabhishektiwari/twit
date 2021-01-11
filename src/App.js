@@ -5,7 +5,7 @@ import Header from "./components/Header/Header";
 import Homepage from "./Pages/Homepage/Homepage";
 import SignInSignUp from "./Pages/sign-in-sign-up/SignInSignUp";
 import { auth, createUserProfileDocument } from "./firebase/utils";
-import "./App.css";
+import "./App.scss";
 
 class App extends Component {
   constructor() {

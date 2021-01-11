@@ -1,14 +1,16 @@
 .post-item {
   margin: 25px 10px 10px 0px;
   .card {
+    background-color: #f6f7f9;
     padding: 10px;
+    .content {
+      .post-user {
+        font-size: 8px;
+      }
+    }
   }
   .post-actions {
     display: flex;
     justify-content: flex-start;
-    .action {
-      margin-right: 12px;
-      cursor: pointer;
-    }
   }
 }

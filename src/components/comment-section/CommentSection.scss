@@ -1,6 +1,59 @@
-.comments-section {
+// .comments-section {
+//   max-height: 200px;
+//   overflow: auto;
+//   .comments {
+//     max-height: 200px;
+//     overflow: auto;
+//   }
+//   .new-comment {
+//     position: absolute;
+//     bottom: 0;
+//     margin-bottom: 10px;
+//   }
+// }
+
+.single-comment {
+  padding: 0 0 0 12px;
+  padding-bottom: 10px;
+
+  &:first-of-type {
+    border-top: 1px solid #e1e2e3;
+  }
+
+  margin: 0;
+
+  .single-container {
+    padding-right: 20px;
+  }
+}
+.action-button {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.comment-section {
+  background-color: #f6f7f9;
+  margin: 0;
+  overflow: auto;
   max-height: 200px;
-  .comments {
-    overflow: auto;
+  margin-top: 10px;
+}
+
+.input {
+  background-color: #f6f7f9;
+  padding: 4px 12px 8px 12px;
+
+  textarea {
+    background: #fff;
+    border: 1px solid gray;
+    box-sizing: border-box;
+    cursor: text;
+    width: calc(100% - 40px);
+    margin-left: 20px;
+    padding: 7px;
+    outline: none;
+    resize: none;
+    overflow: hidden;
+    height: 32px;
   }
 }

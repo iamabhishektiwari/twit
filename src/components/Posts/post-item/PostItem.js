@@ -1,28 +1,39 @@
 import React, { useState } from "react";
-import { Card } from "react-bootstrap";
 import CommentSection from "../../comment-section/CommentSection";
+import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
+import ThumbDownAltIcon from "@material-ui/icons/ThumbDownAlt";
+import CommentIcon from "@material-ui/icons/Comment";
 import "./PostItem.scss";
+import { Button } from "@material-ui/core";
 
 const PostItem = ({ currentUser, post }) => {
-  const [isComment, setIsComment] = useState(false);
-
   return (
     <div className="post-item">
-      <Card className="card">
-        <div className="content" onClick={() => setIsComment(false)}>
-          <p>
-            {post.content}, {post.user.displayName}
-          </p>
+      <div className="card">
+        <div className="content">
+          <div className="post-user text-muted">
+            Posted by: {post.user ? post.user.displayName : "Anonymous"}
+          </div>
+          <p className="post-text">{post.content}</p>
         </div>
         <div className="post-actions">
-          <div className="action">1234 like</div>
-          <div className="action">1234 dislike</div>
-          <div className="action" onClick={() => setIsComment(!isComment)}>
-            1234 comment
-          </div>
+          <Button disableElevation className="action" size="small">
+            <CommentIcon color="primary" fontSize="small" />
+            <div className="count text-muted"> 1234</div>
+          </Button>
+
+          <Button disableElevation size="small" className="action">
+            <ThumbUpAltIcon color="primary" fontSize="small" />
+            <div className="count text-muted"> 1234</div>
+          </Button>
+
+          <Button disableElevation size="small" className="action">
+            <ThumbDownAltIcon color="primary" fontSize="small" />
+            <div className="count text-muted"> 1234</div>
+          </Button>
         </div>
-        {isComment && <CommentSection currentUser={currentUser} post={post} />}
-      </Card>
+        <CommentSection currentUser={currentUser} post={post} />
+      </div>
     </div>
   );
 };

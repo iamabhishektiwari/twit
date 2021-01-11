@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
 import { createCommentDocument, firestore } from "../../firebase/utils";
+import AccountCircleSharpIcon from "@material-ui/icons/AccountCircleSharp";
+
 import "./CommentSection.scss";
 
 const CommentSection = ({ post, currentUser }) => {
@@ -10,10 +11,9 @@ const CommentSection = ({ post, currentUser }) => {
   const handleChange = (event) => {
     setComment(event.target.value);
   };
-  const handleSubmit = async () => {
-    if (comment !== "") {
+  const handleSubmit = async (event) => {
+    if (event.key === "Enter" && comment !== "") {
       await createCommentDocument(comment, post, currentUser);
-      console.log(comment);
       setComment("");
     }
   };
@@ -32,23 +32,49 @@ const CommentSection = ({ post, currentUser }) => {
     return () => setAllComments([]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  return (
-    <div className="comments-section">
-      <div className="comments">
-        {allComments.map((com) => (
-          <div key={com.uid}>{com.comment}</div>
-        ))}
-      </div>
-      <div className="new-comment">
-        <input
-          type="text"
-          name="comment"
-          value={comment}
-          onChange={handleChange}
+
+  const Comment = (props) => (
+    <div className="single-comment">
+      <small style={{ fontSize: 8 }}>{props.name}</small>
+      <div className="single-container">
+        <AccountCircleSharpIcon
+          color="primary"
+          fontSize="small"
+          style={{ marginRight: 5 }}
         />
-        <Button size="sm" onClick={handleSubmit}>
-          Comment
-        </Button>
+        <span>{props.children}</span>
+      </div>
+    </div>
+  );
+
+  return (
+    <div>
+      <div>
+        <div className="comment-section">
+          {allComments.map((comment, iter_i) => (
+            <Comment
+              key={iter_i}
+              name={currentUser ? currentUser.name : "Anonymous"}
+              time={3}
+            >
+              {comment.comment}
+            </Comment>
+          ))}
+        </div>
+        <div className="input">
+          <form>
+            <textarea
+              onKeyPress={handleSubmit}
+              onChange={handleChange}
+              value={comment}
+              placeholder={
+                allComments.length > 0
+                  ? "Write comment..."
+                  : "Write first comment"
+              }
+            />
+          </form>
+        </div>
       </div>
     </div>
   );
