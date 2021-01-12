@@ -7,16 +7,19 @@ import "./Posts.scss";
 const Posts = ({ currentUser }) => {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    firestore.collection("post").onSnapshot((snapShot) => {
-      let POSTS = [];
-      snapShot.forEach((doc) => {
-        POSTS.push({
-          uid: doc.id,
-          ...doc.data(),
+    firestore
+      .collection("post")
+      .orderBy("createAt", "desc")
+      .onSnapshot((snapShot) => {
+        let POSTS = [];
+        snapShot.forEach((doc) => {
+          POSTS.push({
+            uid: doc.id,
+            ...doc.data(),
+          });
         });
+        setPosts(POSTS);
       });
-      setPosts(POSTS);
-    });
     // To avoid memory leak when components unmounts before completing fetch
     // Revisit
     return () => setPosts([]);

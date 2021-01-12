@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { createPostDocument } from "../../firebase/utils";
 import PublicIcon from "@material-ui/icons/Public";
-import { Button, Card, CircularProgress } from "@material-ui/core";
+import { Button, Card } from "@material-ui/core";
+import { ReactComponent as Loader } from "../../assets/loader_2.svg";
 import "./NewPost.scss";
 
 const INITIAL_STATE = () => {
@@ -39,7 +40,7 @@ const NewPost = ({ currentUser, warningMessage }) => {
       <Card className="card" elevation={0}>
         <div className="form">
           {isPostPressed ? (
-            <CircularProgress />
+            <Loader />
           ) : (
             <textarea
               className="textarea"

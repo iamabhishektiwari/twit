@@ -2,6 +2,8 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 
+export const Increament = firebase.firestore.FieldValue.increment(1);
+
 const createUID = () => {
   const characters =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -22,7 +24,6 @@ const config = {
   appId: "1:719087174754:web:630c9c4a800b2fcefa3d3b",
   measurementId: "G-JHHBKNKFN0",
 };
-
 export const createPostDocument = async (postDoc) => {
   const postID = createUID();
   const postRef = firestore.doc(`post/${postID}`);
@@ -30,12 +31,16 @@ export const createPostDocument = async (postDoc) => {
   if (!snapShot.exists) {
     const { user, content } = postDoc;
     const createAt = new Date();
+    const like = 0;
+    const dislike = 0;
 
     try {
       await postRef.set({
         user,
         content,
         createAt,
+        like,
+        dislike,
       });
     } catch (error) {
       console.log("error creating post", error.message);

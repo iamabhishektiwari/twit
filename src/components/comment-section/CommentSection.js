@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { createCommentDocument, firestore } from "../../firebase/utils";
+import React, { useState } from "react";
+import { createCommentDocument } from "../../firebase/utils";
 import AccountCircleSharpIcon from "@material-ui/icons/AccountCircleSharp";
-
+import { ReactComponent as Loader } from "../../assets/loader.svg";
 import "./CommentSection.scss";
 import { CircularProgress } from "@material-ui/core";
 
-const CommentSection = ({ post, currentUser }) => {
+const CommentSection = ({ post, currentUser, allComments }) => {
   const [isEnterPressed, setIsEnterPressed] = useState(false);
   const [comment, setComment] = useState("");
-  const [allComments, setAllComments] = useState(null);
 
   const handleChange = (event) => {
     setComment(event.target.value);
@@ -21,21 +20,6 @@ const CommentSection = ({ post, currentUser }) => {
       setIsEnterPressed(false);
     }
   };
-
-  useEffect(() => {
-    firestore.collection(`post/${post.uid}/comments`).onSnapshot((snapShot) => {
-      let COMMENTS = [];
-      snapShot.forEach((doc) => {
-        COMMENTS.push({ uid: doc.id, ...doc.data() });
-      });
-      setAllComments(COMMENTS);
-    });
-
-    // To avoid memory leak when components unmounts before completing fetch
-    // Revisit
-    return () => setAllComments([]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const Comment = (props) => (
     <div className="single-comment">
@@ -53,7 +37,7 @@ const CommentSection = ({ post, currentUser }) => {
   if (allComments === null) {
     return (
       <div style={{ textAlign: "center" }}>
-        <CircularProgress size={40} />
+        <Loader />
       </div>
     );
   }
