@@ -1,7 +1,12 @@
 .sign-in {
+  margin-top: 5%;
+  text-align: center;
   width: 400px;
   display: flex;
   flex-direction: column;
+  form {
+    margin-top: 40px;
+  }
 }
 .title {
   margin: 10px, 0;

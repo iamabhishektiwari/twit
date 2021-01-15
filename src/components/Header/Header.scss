@@ -1,25 +1,7 @@
-.header {
-  height: 70px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
+.navLinkButton {
+  color: black;
 
-  .logo {
-    width: 100px;
-    height: 100px;
-    background-size: cover;
-    background-position: center;
-    cursor: pointer;
-  }
-  .sign-in-sign-up {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-
-    .item {
-      margin: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+  &:hover {
+    color: black;
   }
 }

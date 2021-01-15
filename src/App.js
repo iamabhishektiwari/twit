@@ -1,5 +1,4 @@
 import { Component } from "react";
-import { Container } from "react-bootstrap";
 import { Route, Switch } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Homepage from "./Pages/Homepage/Homepage";
@@ -12,7 +11,6 @@ class App extends Component {
     super();
     this.state = {
       currentUser: null,
-      warningMessage: "Post as anonymous",
       userFetched: false,
     };
   }
@@ -30,7 +28,6 @@ class App extends Component {
               ...snapShot.data(),
             },
             userFetched: true,
-            warningMessage: `Post as ${snapShot.data().displayName}`,
           });
         });
       }
@@ -45,25 +42,21 @@ class App extends Component {
   }
   render() {
     return (
-      <Container>
+      <div>
         <Header currentUser={this.state.currentUser} />
-        {this.state.userFetched && (
-          <Switch>
-            <Route exact path="/">
-              <Homepage
-                currentUser={this.state.currentUser}
-                warningMessage={this.state.warningMessage}
-              />
-            </Route>
-            <Route exact path="/sign-up">
-              <SignInSignUp />
-            </Route>
-            <Route exact path="/sign-in">
-              <SignInSignUp isSignIn />
-            </Route>
-          </Switch>
-        )}
-      </Container>
+
+        <Switch>
+          <Route exact path="/">
+            <Homepage currentUser={this.state.currentUser} />
+          </Route>
+          <Route exact path="/sign-up">
+            <SignInSignUp />
+          </Route>
+          <Route exact path="/sign-in">
+            <SignInSignUp isSignIn />
+          </Route>
+        </Switch>
+      </div>
     );
   }
 }

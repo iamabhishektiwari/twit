@@ -11,7 +11,10 @@ const INITIAL_STATE = () => {
   };
 };
 
-const NewPost = ({ currentUser, warningMessage }) => {
+const NewPost = ({ currentUser }) => {
+  const warningMessage = currentUser
+    ? `Post as ${currentUser.username}`
+    : "Post as Anonymous";
   const [isPostPressed, setIsPostPressed] = useState(false);
   const [state, setState] = useState(INITIAL_STATE);
 

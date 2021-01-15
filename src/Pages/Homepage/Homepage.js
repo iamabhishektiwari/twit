@@ -5,12 +5,12 @@ import Posts from "../../components/Posts/Posts";
 
 import "./Homepage.scss";
 
-const Homepage = ({ currentUser, warningMessage }) => {
+const Homepage = ({ currentUser }) => {
   return (
     <Container className="home">
       <Row>
         <Col>
-          <NewPost currentUser={currentUser} warningMessage={warningMessage} />
+          <NewPost currentUser={currentUser} />
           <Posts currentUser={currentUser} />
         </Col>
         <Col lg={4} className="d-none d-lg-block">

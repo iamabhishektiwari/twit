@@ -3,20 +3,30 @@ import CustomButton from "../../../components/custom-button/CustomButton";
 import FormInput from "../../../components/form-input/FormInput";
 import { auth, createUserProfileDocument } from "../../../firebase/utils";
 import "./SignUp.scss";
+import CustomBackdrop from "./CustomBackdrop";
 
 class SignUp extends Component {
   constructor() {
     super();
     this.state = {
-      displayName: "",
+      username: "",
       email: "",
       password: "",
       confirmPassword: "",
+      isOpen: false,
     };
   }
+
+  handleClose = () => {
+    this.setState({ isOpen: false });
+  };
+  handleToggle = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+  };
   handleSubmit = async (event) => {
     event.preventDefault();
-    const { displayName, email, password, confirmPassword } = this.state;
+    this.handleToggle();
+    const { username, email, password, confirmPassword } = this.state;
     if (password !== confirmPassword) {
       alert("password don't match");
       return;
@@ -26,14 +36,16 @@ class SignUp extends Component {
         email,
         password
       );
-      await createUserProfileDocument(user, { displayName });
+      await createUserProfileDocument(user, { username });
       this.setState({
-        displayName: "",
+        username: "",
         email: "",
         password: "",
         confirmPassword: "",
       });
+      this.handleClose();
     } catch (error) {
+      this.handleClose();
       console.log(error);
     }
   };
@@ -43,18 +55,19 @@ class SignUp extends Component {
     this.setState({ [name]: value });
   };
   render() {
-    const { displayName, email, password, confirmPassword } = this.state;
+    const { username, email, password, confirmPassword } = this.state;
     return (
       <div className="sign-up">
+        <CustomBackdrop isOpen={this.state.isOpen} />
         <h2 className="title">I do not have a account</h2>
         <span>Signup with your email and password</span>
         <form className="sign-up-form" onSubmit={this.handleSubmit}>
           <FormInput
             type="text"
-            name="displayName"
-            value={displayName}
+            name="username"
+            value={username}
             onChange={this.handleChange}
-            label="Display Name"
+            label="Username"
           />
           <FormInput
             type="email"
