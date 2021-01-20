@@ -1,25 +1,27 @@
 {
   "files": {
-    "main.css": "/twit/static/css/main.ec9ec881.chunk.css",
-    "main.js": "/twit/static/js/main.52fb33b6.chunk.js",
-    "main.js.map": "/twit/static/js/main.52fb33b6.chunk.js.map",
-    "runtime-main.js": "/twit/static/js/runtime-main.11cbeeab.js",
-    "runtime-main.js.map": "/twit/static/js/runtime-main.11cbeeab.js.map",
+    "main.css": "/twit/static/css/main.0323f59a.chunk.css",
+    "main.js": "/twit/static/js/main.c564194b.chunk.js",
+    "main.js.map": "/twit/static/js/main.c564194b.chunk.js.map",
+    "runtime-main.js": "/twit/static/js/runtime-main.08ac1088.js",
+    "runtime-main.js.map": "/twit/static/js/runtime-main.08ac1088.js.map",
     "static/css/2.ae9f1eb3.chunk.css": "/twit/static/css/2.ae9f1eb3.chunk.css",
-    "static/js/2.5b59ac38.chunk.js": "/twit/static/js/2.5b59ac38.chunk.js",
-    "static/js/2.5b59ac38.chunk.js.map": "/twit/static/js/2.5b59ac38.chunk.js.map",
-    "static/js/3.1d984f1d.chunk.js": "/twit/static/js/3.1d984f1d.chunk.js",
-    "static/js/3.1d984f1d.chunk.js.map": "/twit/static/js/3.1d984f1d.chunk.js.map",
+    "static/js/2.e4e9bcf0.chunk.js": "/twit/static/js/2.e4e9bcf0.chunk.js",
+    "static/js/2.e4e9bcf0.chunk.js.map": "/twit/static/js/2.e4e9bcf0.chunk.js.map",
+    "static/js/3.33fdcab9.chunk.js": "/twit/static/js/3.33fdcab9.chunk.js",
+    "static/js/3.33fdcab9.chunk.js.map": "/twit/static/js/3.33fdcab9.chunk.js.map",
     "index.html": "/twit/index.html",
     "static/css/2.ae9f1eb3.chunk.css.map": "/twit/static/css/2.ae9f1eb3.chunk.css.map",
-    "static/css/main.ec9ec881.chunk.css.map": "/twit/static/css/main.ec9ec881.chunk.css.map",
-    "static/js/2.5b59ac38.chunk.js.LICENSE.txt": "/twit/static/js/2.5b59ac38.chunk.js.LICENSE.txt"
+    "static/css/main.0323f59a.chunk.css.map": "/twit/static/css/main.0323f59a.chunk.css.map",
+    "static/js/2.e4e9bcf0.chunk.js.LICENSE.txt": "/twit/static/js/2.e4e9bcf0.chunk.js.LICENSE.txt",
+    "static/media/loader.6b789d9d.svg": "/twit/static/media/loader.6b789d9d.svg",
+    "static/media/loader_2.e67c4bc3.svg": "/twit/static/media/loader_2.e67c4bc3.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.11cbeeab.js",
+    "static/js/runtime-main.08ac1088.js",
     "static/css/2.ae9f1eb3.chunk.css",
-    "static/js/2.5b59ac38.chunk.js",
-    "static/css/main.ec9ec881.chunk.css",
-    "static/js/main.52fb33b6.chunk.js"
+    "static/js/2.e4e9bcf0.chunk.js",
+    "static/css/main.0323f59a.chunk.css",
+    "static/js/main.c564194b.chunk.js"
   ]
 }
